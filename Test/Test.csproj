@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2B03A9BA-1D86-4020-98A6-CD03187689B2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Test</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Mono.Cairo, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Rendering\BaseRenderer.cs" />
+    <Compile Include="Rendering\IRenderContext.cs" />
+    <Compile Include="Rendering\RenderContext.cs" />
+    <Compile Include="Rendering\ILayoutProvider.cs" />
+    <Compile Include="Rendering\IContextProvider.cs" />
+    <Compile Include="Rendering\IThemeProvider.cs" />
+    <Compile Include="Rendering.Gtk\IWidgetLayoutProvider.cs" />
+    <Compile Include="Rendering.Gtk\IWidgetThemeProvider.cs" />
+    <Compile Include="Rendering\DoubleBuffer.cs" />
+    <Compile Include="Rendering.Gtk\DoubleBufferedWidgetSurface.cs" />
+    <Compile Include="Rendering.Gtk\WidgetRenderContext.cs" />
+    <Compile Include="Rendering\Theme.cs" />
+    <Compile Include="Rendering\IDoubleBuffer.cs" />
+    <Compile Include="Rendering\DoubleBufferedSurface.cs" />
+    <Compile Include="ListView\IModel.cs" />
+    <Compile Include="Rendering.ListView\IList.cs" />
+    <Compile Include="Rendering.ListView\ICellRenderer.cs" />
+    <Compile Include="Rendering.ListView\IListRenderer.cs" />
+    <Compile Include="Rendering.ListView\IRowRenderer.cs" />
+    <Compile Include="Rendering.ListView\IScrollable.cs" />
+    <Compile Include="Rendering.ListView\ISelectableList.cs" />
+    <Compile Include="Rendering.ListView\BaseRowRenderer.cs" />
+    <Compile Include="Rendering.ListView\ScrollRenderer.cs" />
+    <Compile Include="Rendering.ListView\SelectableRowsRenderer.cs" />
+    <Compile Include="Rendering.ListView\SelectableScrollRenderer.cs" />
+    <Compile Include="Rendering\IRenderer.cs" />
+    <Compile Include="Rendering.ListView\BaseListRenderer.cs" />
+    <Compile Include="Rendering.ListView\ColumnRowRenderer.cs" />
+    <Compile Include="Rendering.ListView\GridRowRenderer.cs" />
+    <Compile Include="Rendering.ListView\RuledRowRenderer.cs" />
+    <Compile Include="Rendering.ListView\IColumns.cs" />
+    <Compile Include="Rendering.ListView\IColumn.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Rendering/" />
+    <Folder Include="Rendering.Gtk/" />
+    <Folder Include="ListView/" />
+    <Folder Include="Rendering.ListView/" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <GtkDesignInfo />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

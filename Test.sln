@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{2B03A9BA-1D86-4020-98A6-CD03187689B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B03A9BA-1D86-4020-98A6-CD03187689B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B03A9BA-1D86-4020-98A6-CD03187689B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B03A9BA-1D86-4020-98A6-CD03187689B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B03A9BA-1D86-4020-98A6-CD03187689B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		name = Test
+		version = 0.1
+		StartupItem = Test\Test.csproj
+	EndGlobalSection
+EndGlobal
