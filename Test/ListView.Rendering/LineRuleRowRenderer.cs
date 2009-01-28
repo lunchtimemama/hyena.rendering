@@ -1,4 +1,4 @@
-// BaseRenderer.cs
+// RuledRowRenderer.cs
 //
 // Copyright (c) 2009 [copyright holders]
 //
@@ -23,23 +23,30 @@
 //
 
 using System;
+using Gtk;
 
 namespace Test
 {
-    public class BaseRenderer<TRenderContext> : IRenderer<TRenderContext>
+    public class LineRuleRowRenderer<TRenderContext> : BaseRowRenderer<TRenderContext>
+        where TRenderContext : IThemeContext
     {
-        private readonly IRenderer<TRenderContext> next_renderer;
-        
-        protected BaseRenderer(IRenderer<TRenderContext> nextRenderer)
+        public LineRuleRowRenderer()
+            : this (null)
         {
-            this.next_renderer = nextRenderer;
+        }
+        
+        public LineRuleRowRenderer(IRowRenderer<TRenderContext> nextRenderer)
+            : base (nextRenderer)
+        {
         }
 
-        public virtual void Render (IRenderContext<TRenderContext> context)
+        public override void RenderRow (IRenderContext<TRenderContext> context,
+                                        int rowIndex, StatusType statusType, int width, int height)
         {
-            if (next_renderer != null) {
-                next_renderer.Render (context);
+            if (statusType == StatusType.Normal && rowIndex % 2 != 0) {
+                context.ExtendedContext.Theme.RenderRule (context.Context, width, height);
             }
+            base.RenderRow (context, rowIndex, statusType);
         }
     }
 }

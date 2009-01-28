@@ -44,7 +44,7 @@ namespace Test
                 new Context (SecondaryBuffer));
         }
 
-        Context IContextProvider.Context {
+        public Context Context {
             get { return context_buffer.PrimaryBuffer; }
         }
 

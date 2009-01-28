@@ -1,4 +1,4 @@
-// BaseRenderer.cs
+// IScrollable.cs
 //
 // Copyright (c) 2009 [copyright holders]
 //
@@ -24,22 +24,11 @@
 
 using System;
 
-namespace Test
+namespace Hyena.Gui.Rendering
 {
-    public class BaseRenderer<TRenderContext> : IRenderer<TRenderContext>
+    public interface IScrollable
     {
-        private readonly IRenderer<TRenderContext> next_renderer;
-        
-        protected BaseRenderer(IRenderer<TRenderContext> nextRenderer)
-        {
-            this.next_renderer = nextRenderer;
-        }
-
-        public virtual void Render (IRenderContext<TRenderContext> context)
-        {
-            if (next_renderer != null) {
-                next_renderer.Render (context);
-            }
-        }
+        int VerticalOffset { get; }
+        int HorizontalOffset { get; }
     }
 }

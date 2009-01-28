@@ -1,4 +1,4 @@
-// BaseRenderer.cs
+// IThemeContext.cs
 //
 // Copyright (c) 2009 [copyright holders]
 //
@@ -26,20 +26,8 @@ using System;
 
 namespace Test
 {
-    public class BaseRenderer<TRenderContext> : IRenderer<TRenderContext>
+    public interface IThemeContext
     {
-        private readonly IRenderer<TRenderContext> next_renderer;
-        
-        protected BaseRenderer(IRenderer<TRenderContext> nextRenderer)
-        {
-            this.next_renderer = nextRenderer;
-        }
-
-        public virtual void Render (IRenderContext<TRenderContext> context)
-        {
-            if (next_renderer != null) {
-                next_renderer.Render (context);
-            }
-        }
+        Theme Theme { get; }
     }
 }

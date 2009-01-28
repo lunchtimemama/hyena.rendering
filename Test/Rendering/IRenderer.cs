@@ -26,8 +26,8 @@ using System;
 
 namespace Test
 {
-    public interface IRenderer
+    public interface IRenderer<TRenderContext>
     {
-        void Render (IRenderContext context);
+        void Render (IRenderContext<TRenderContext> context);
     }
 }

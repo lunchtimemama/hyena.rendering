@@ -1,4 +1,4 @@
-// BaseRenderer.cs
+// BaseListRenderer.cs
 //
 // Copyright (c) 2009 [copyright holders]
 //
@@ -26,19 +26,19 @@ using System;
 
 namespace Test
 {
-    public class BaseRenderer<TRenderContext> : IRenderer<TRenderContext>
+    public class BaseListRenderer<TRenderContext> : IListRenderer<TRenderContext>
     {
-        private readonly IRenderer<TRenderContext> next_renderer;
+        private readonly IListRenderer<TRenderContext> next_renderer;
         
-        protected BaseRenderer(IRenderer<TRenderContext> nextRenderer)
+        public BaseListRenderer (IListRenderer<TRenderContext> nextRenderer)
         {
             this.next_renderer = nextRenderer;
         }
 
-        public virtual void Render (IRenderContext<TRenderContext> context)
+        public virtual void RenderRows (IRenderContext<TRenderContext> context, int startIndex, int endIndex, int width)
         {
             if (next_renderer != null) {
-                next_renderer.Render (context);
+                next_renderer.RenderRows (context, startIndex, endIndex, width);
             }
         }
     }

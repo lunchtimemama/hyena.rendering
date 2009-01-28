@@ -1,4 +1,4 @@
-// BaseRenderer.cs
+// DraggableColumnRowRenderer.cs
 //
 // Copyright (c) 2009 [copyright holders]
 //
@@ -26,20 +26,29 @@ using System;
 
 namespace Test
 {
-    public class BaseRenderer<TRenderContext> : IRenderer<TRenderContext>
-    {
-        private readonly IRenderer<TRenderContext> next_renderer;
-        
-        protected BaseRenderer(IRenderer<TRenderContext> nextRenderer)
+	public class DraggableColumnRowRenderer<TRenderContext, TModel> : ColumnRowRenderer<TRenderContext, TModel>
+	{
+		private readonly IDraggableColumns<TRenderContext, TModel> columns;
+
+        public DraggableColumnRowRenderer (IDraggableColumns<TRenderContext, TModel> columns, IModel<TModel> model)
+            : this (columns, model, null)
         {
-            this.next_renderer = nextRenderer;
+        }
+        
+        public DraggableColumnRowRenderer (IDraggableColumns<TRenderContext, TModel> columns, IModel<TModel> model,
+                                  IRowRenderer<TRenderContext> nextRenderer)
+            : base (columns, model, nextRenderer)
+        {
+            this.columns = columns;
         }
 
-        public virtual void Render (IRenderContext<TRenderContext> context)
-        {
-            if (next_renderer != null) {
-                next_renderer.Render (context);
-            }
-        }
-    }
+		public override void RenderCell (IRenderContext<TRenderContext> context, TModel item,
+		                                     IColumn<TRenderContext, TModel> column, int height)
+		{
+			if (column != columns.DraggingColumn) {
+				base.RenderRow (context, rowIndex, statusType, width, height);
+			}
+		}
+
+	}
 }

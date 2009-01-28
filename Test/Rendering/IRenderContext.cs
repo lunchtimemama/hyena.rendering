@@ -12,8 +12,12 @@ namespace Test
 {
     public interface IRenderContext
     {
-        Context Context { get; }
-        Layout Layout { get; }
-        Theme Theme { get; }
+        Context CairoContext { get; }
+        object ExtendedContext { get; }
+    }
+    
+    public interface IRenderContext<TRenderContext> : IRenderContext
+    {
+        TRenderContext ExtendedContext { get; }
     }
 }

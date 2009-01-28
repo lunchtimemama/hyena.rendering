@@ -1,4 +1,4 @@
-// BaseRenderer.cs
+// BaseCellRenderer.cs
 //
 // Copyright (c) 2009 [copyright holders]
 //
@@ -26,20 +26,20 @@ using System;
 
 namespace Test
 {
-    public class BaseRenderer<TRenderContext> : IRenderer<TRenderContext>
-    {
-        private readonly IRenderer<TRenderContext> next_renderer;
-        
-        protected BaseRenderer(IRenderer<TRenderContext> nextRenderer)
-        {
-            this.next_renderer = nextRenderer;
-        }
+	public class BaseCellRenderer<TRenderContext, TModel> : ICellRenderer<TRenderContext, TModel>
+	{
+		private readonly ICellRenderer<TRenderContext, TModel> next_renderer;
+		
+		public BaseCellRenderer(ICellRenderer<TRenderContext, TModel> nextRenderer)
+		{
+			this.next_renderer = nextRenderer;
+		}
 
-        public virtual void Render (IRenderContext<TRenderContext> context)
-        {
-            if (next_renderer != null) {
-                next_renderer.Render (context);
-            }
-        }
-    }
+		public virtual void RenderCell (IRenderContext<TRenderContext> context, TModel item, int width, int height)
+		{
+			if (renderer != null) {
+				renderer.RenderCell (context, item, width, height);
+			}
+		}
+	}
 }

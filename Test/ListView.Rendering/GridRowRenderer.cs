@@ -1,4 +1,4 @@
-// BaseRenderer.cs
+// GridRowRenderer.cs
 //
 // Copyright (c) 2009 [copyright holders]
 //
@@ -26,20 +26,16 @@ using System;
 
 namespace Test
 {
-    public class BaseRenderer<TRenderContext> : IRenderer<TRenderContext>
+    public class GridRowRenderer : BaseRowRenderer
     {
-        private readonly IRenderer<TRenderContext> next_renderer;
-        
-        protected BaseRenderer(IRenderer<TRenderContext> nextRenderer)
+        public GridRowRenderer ()
+            : this (null)
         {
-            this.next_renderer = nextRenderer;
         }
-
-        public virtual void Render (IRenderContext<TRenderContext> context)
+        
+        public GridRowRenderer (IRowRenderer nextRenderer)
+            : base (nextRenderer)
         {
-            if (next_renderer != null) {
-                next_renderer.Render (context);
-            }
         }
     }
 }
